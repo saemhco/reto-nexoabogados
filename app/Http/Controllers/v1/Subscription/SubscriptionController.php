@@ -7,6 +7,7 @@ use App\Helpers\SubscriptionHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Subscription\StoreAbogado;
 use App\Http\Requests\Subscription\Update;
+use App\Jobs\ProcessingPaymentJob;
 use App\Mail\SubscriptionResult;
 use App\Models\Subscription;
 use Illuminate\Support\Facades\Mail;
@@ -28,7 +29,7 @@ class SubscriptionController extends Controller
         $request->merge(['user_id' => auth()->user()->id]);
         $subscription = Subscription::create($request->input()); //Guardamos los datos
 
-        $this->processing_payment($subscription->fresh());
+        ProcessingPaymentJob::dispatch($subscription)->delay(now()->addMinutes(1));
         return $this->showMessage("Datos registrados correctamente", $subscription->fresh()->withData(), 201);
     }
 

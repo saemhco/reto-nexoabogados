@@ -39,7 +39,7 @@ class StoreAbogado extends FormRequest
     public function rules()
     {
         return [
-            'plan_id'   => 'required|integer|exists:plans,id', //|is_user_subscribed|is_user_processing',
+            'plan_id'   => 'required|integer|exists:plans,id|is_user_subscribed|is_user_processing',
             'frecuency' => 'required|string|in:Mensual,Anual',
         ];
     }
