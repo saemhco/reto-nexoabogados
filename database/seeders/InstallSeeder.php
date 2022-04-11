@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Http\Controllers\v1\Admin\SettingController;
 use App\Models\Person;
+use App\Models\Plan;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -50,7 +51,7 @@ class InstallSeeder extends Seeder
         ]);
 
 
-        // ==================== Defauld users ====================
+        // ==================== usuarios ====================
         User::create(
             [
                 'email'     => 'juan@nexoabogados.net',
@@ -62,11 +63,33 @@ class InstallSeeder extends Seeder
 
         User::create(
             [
-                'email'     => 'e.m.saul.angel@gmail.com',
+                'email'     => 'aescandonmunguia@hotmail.com',
                 'name'      => 'Saúl Escandón',
                 'password'  => 'password',
                 'email_verified_at' => now(),
             ]
         )->syncRoles(['Abogado(a)']);
+
+        // ====================Planes de suscripcion ====================
+        Plan::insert([
+            [
+                'name'          => 'PREMIUM',
+                'description'   => '15 créditos (contactos) / mes',
+                'monthly_price' => '17.7',
+                'annual_price'  => '190.8'
+            ],
+            [
+                'name'          => 'SILVER',
+                'description'   => '30 créditos (contactos) / mes',
+                'monthly_price' => '25.70',
+                'annual_price'  => '274.80'
+            ],
+            [
+                'name'          => 'GOLD',
+                'description'   => '60 créditos (contactos) / mes',
+                'monthly_price' => '49.70',
+                'annual_price'  => '526.80'
+            ]
+        ]);
     }
 }

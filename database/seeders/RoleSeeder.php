@@ -30,11 +30,19 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => "role.update", 'description' => 'Actualizar datos de un role', 'is_admin' => true])->syncRoles($panel);
         Permission::create(['name' => "role.destroy", 'description' => 'Eliminar un registro de role', 'is_admin' => true])->syncRoles($panel);
 
-        //roles de prueba
-        Permission::create(['name' => "suscription.index",  'description' => 'Listar data'])->syncRoles([$panel, $abogado]);
-        Permission::create(['name' => "suscription.store",  'description' => 'Registrar data'])->syncRoles([$panel, $abogado]);
-        Permission::create(['name' => "suscription.show",   'description' => 'Mostrar data'])->syncRoles([$panel, $abogado]);
-        Permission::create(['name' => "suscription.update", 'description' => 'Actualizar data'])->syncRoles([$panel, $abogado]);
-        Permission::create(['name' => "suscription.destroy", 'description' => 'Eliminar data'])->syncRoles([$panel, $abogado]);
+        Permission::create(['name' => "subscription.index",  'description' => 'Listar data'])->syncRoles([$panel]);
+        Permission::create(['name' => "subscription.store",  'description' => 'Registrar data'])->syncRoles([$panel, $abogado]);
+        Permission::create(['name' => "subscription.show",   'description' => 'Mostrar data'])->syncRoles([$panel]);
+        Permission::create(['name' => "subscription.update", 'description' => 'Actualizar data'])->syncRoles([$panel, $abogado]);
+        Permission::create(['name' => "subscription.renewal_cancel", 'description' => 'Cancelar renovación de suscripción'])->syncRoles([$panel, $abogado]);
+        Permission::create(['name' => "subscription.current_subscription", 'description' => 'Ver suscripción actual'])->syncRoles([$panel, $abogado]);
+        Permission::create(['name' => "subscription.cancel", 'description' => 'Cancelar cualquier suscripción'])->syncRoles([$panel]);
+        Permission::create(['name' => "subscription.processing_payment", 'description' => 'Reintentar pago de cualquier suscripción'])->syncRoles([$panel]);
+
+        Permission::create(['name' => "plan.index",  'description' => 'Listar data'])->syncRoles([$panel, $abogado]);
+        Permission::create(['name' => "plan.store",  'description' => 'Registrar data'])->syncRoles([$panel]);
+        Permission::create(['name' => "plan.show",   'description' => 'Mostrar data'])->syncRoles([$panel, $abogado]);
+        Permission::create(['name' => "plan.update", 'description' => 'Actualizar data'])->syncRoles([$panel]);
+        Permission::create(['name' => "plan.destroy", 'description' => 'Eliminar data'])->syncRoles([$panel]);
     }
 }

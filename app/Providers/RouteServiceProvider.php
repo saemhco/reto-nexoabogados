@@ -34,6 +34,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(function () {
                     require base_path('routes/api/v1/auth.php');
                     require base_path('routes/api/v1/panel.php');
+                    require base_path('routes/api/v1/subscription.php');
                 });
 
             Route::middleware('web')

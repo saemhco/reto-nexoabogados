@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\v1\Auth\RolController;
+use App\Http\Controllers\v1\Subscription\PlanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('roles', RolController::class)->except('destroy')->names('user');
+Route::apiResource('roles', RolController::class)->except('destroy')->names('roles');
+Route::apiResource('plan', PlanController::class)->except('destroy')->names('plan');
