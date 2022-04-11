@@ -52,8 +52,8 @@ class ProcessingPaymentJob implements ShouldQueue
         }
         Mail::to(auth()->user()->email)->send(new SubscriptionResult($this->subscription->fresh()->withData()));
         if ($result)
-            return response()->json(['message' => 'Pago exitoso', 'content' => $this->subscription->fresh(), 'code' => 200], 200);
+            return true;
         else
-            return response()->json(['message' => 'Pago fallido', 'errors' => null, 'code' => 400], 400);
+            return false;
     }
 }

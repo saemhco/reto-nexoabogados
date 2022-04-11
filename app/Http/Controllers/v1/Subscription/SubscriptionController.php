@@ -28,8 +28,8 @@ class SubscriptionController extends Controller
     {
         $request->merge(['user_id' => auth()->user()->id]);
         $subscription = Subscription::create($request->input()); //Guardamos los datos
-
-        ProcessingPaymentJob::dispatch($subscription)->delay(now()->addMinutes(1));
+        //$this->processing_payment($subscription);
+        ProcessingPaymentJob::dispatch($subscription)->delay(now()->addMinutes(30));
         return $this->showMessage("Datos registrados correctamente", $subscription->fresh()->withData(), 201);
     }
 

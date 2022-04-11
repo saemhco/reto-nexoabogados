@@ -68,3 +68,22 @@ php artisan migrate:fresh --seed
 ```
 php artisan optimize:clear
 ```
+
+7. Configuar email en .env, ejemplo
+
+```
+MAIL_MAILER=smtp
+MAIL_HOST=dev.autoamaz.com
+MAIL_PORT=465
+MAIL_USERNAME=user@mail.com
+MAIL_PASSWORD=2012110690
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS="noreply@nexoabogados.net"
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+8. Ejecutar
+
+```
+php artisan queue:work --tries=4
+```
